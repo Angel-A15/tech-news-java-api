@@ -18,7 +18,9 @@ To construct a codebase to excell my deisres, I established the following:
  * Spring Boot Framework
  * Maven
  * Java
- * 
+ * CSS
+ * XML
+ * HTML
 
 ## Preview of Application
 
