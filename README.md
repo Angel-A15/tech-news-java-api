@@ -8,13 +8,17 @@ write or edit posts, comment, and like posts.
 
 ## Description
 To construct a codebase to excell my deisres, I established the following:
-  **
-  **
-  **
-  **
-  **
+  * 
+  *
+  *
+  *
+  *
   
 ## Built With
+ * Spring Boot Framework
+ * Maven
+ * Java
+ * 
 
 ## Preview of Application
 
