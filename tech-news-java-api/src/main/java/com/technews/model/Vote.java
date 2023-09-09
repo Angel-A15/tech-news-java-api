@@ -1,4 +1,5 @@
-package model;
+package main.java.com.technews.model;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -59,7 +60,7 @@ public class Vote implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vote vote = (Vote) o;
+        model.Vote vote = (model.Vote) o;
         return Objects.equals(id, vote.id) &&
                 Objects.equals(userId, vote.userId) &&
                 Objects.equals(postId, vote.postId);

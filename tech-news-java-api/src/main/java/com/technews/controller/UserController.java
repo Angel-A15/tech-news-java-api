@@ -2,7 +2,6 @@ package main.java.com.technews.controller;
 
 
 import model.Post;
-import model.User;
 import repository.UserRepository;
 import repository.VoteRepository;
 

@@ -1,33 +1,17 @@
-//package main.java.com.technews.controller;
+package main.java.com.technews.controller;
+
+import model.Post;
+import model.Vote;
+import repository.PostRepository;
+import repository.UserRepository;
+import repository.VoteRepository;
+
+import java.util.List;
+//        import org.springframework.beans.factory.annotation.Autowired;
+//        import org.springframework.http.HttpStatus;
+//        import org.springframework.web.bind.annotation.*;
 //
-//import model.Post;
-//import model.User;
-//import model.Vote;
-//import repository.PostRepository;
-//import repository.UserRepository;
-//import repository.VoteRepository;
-//
-//import java.util.List;
-//
-//public class PostController {
-//}
-
-
-
-package com.technews.controller;
-
-        import com.technews.model.Post;
-        import com.technews.model.User;
-        import com.technews.model.Vote;
-        import com.technews.repository.PostRepository;
-        import com.technews.repository.UserRepository;
-        import com.technews.repository.VoteRepository;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.http.HttpStatus;
-        import org.springframework.web.bind.annotation.*;
-
-        import javax.servlet.http.HttpServletRequest;
-        import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class PostController {

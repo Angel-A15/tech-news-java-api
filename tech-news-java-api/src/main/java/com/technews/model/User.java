@@ -1,38 +1,32 @@
-package model;
+package main.java.com.technews.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.*;
+import java.beans.Transient;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "user")
-
 public class User implements Serializable {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String username;
+
     @Column(unique = true)
     private String email;
     private String password;
     @Transient
     boolean loggedIn;
-
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Post> posts;
 
+    private List<Post> posts;
     // Need to use FetchType.LAZY to resolve multiple bags exception
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Vote> votes;
-
     // Need to use FetchType.LAZY to resolve multiple bags exception
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
@@ -40,16 +34,19 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Integer id, String username, String email, String email1, String password) {
+    public User(Integer id, String username, String email, String password, boolean loggedIn, List<Post> posts, List<Vote> votes, List<Comment> comments) {
         this.id = id;
         this.username = username;
-        this.email = email1;
+        this.email = email;
         this.password = password;
+        this.loggedIn = loggedIn;
+        this.posts = posts;
+        this.votes = votes;
+        this.comments = comments;
     }
 
     public Integer getId() {
-    return id;
-
+        return id;
     }
 
     public void setId(Integer id) {
@@ -117,28 +114,12 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return loggedIn == user.loggedIn &&
-                Objects.equals(id, user.id) &&
-                Objects.equals(username, user.username) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(posts, user.posts) &&
-                Objects.equals(votes, user.votes) &&
-                Objects.equals(comments, user.comments);
+        return loggedIn == user.loggedIn && Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(posts, user.posts) && Objects.equals(votes, user.votes) && Objects.equals(comments, user.comments);
     }
-
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                id,
-                username,
-                email,
-                password,
-                loggedIn,
-                posts,
-                votes,
-                comments);
+        return Objects.hash(id, username, email, password, loggedIn, posts, votes, comments);
     }
 
     @Override
@@ -154,4 +135,5 @@ public class User implements Serializable {
                 ", comments=" + comments +
                 '}';
     }
+
 }
