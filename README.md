@@ -5,6 +5,14 @@ likes, comments, and editing, and reduce buffering through a single page handler
 ## Project
 As a full stack web developer, I want to create an application that will allow visitors to: create a user, 
 write or edit posts, comment, and like posts.
+
+## Description
+To construct a codebase to excell my deisres, I established the following:
+  * 
+  *
+  *
+  *
+  *
   
 ## Built With
  * Spring Boot Framework
