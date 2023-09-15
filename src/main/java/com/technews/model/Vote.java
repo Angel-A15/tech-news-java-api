@@ -1,13 +1,6 @@
 package main.java.com.technews.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.*;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -15,13 +8,14 @@ import java.util.Objects;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "vote")
 
+
 public class Vote implements Serializable {
+
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer userId;
     private Integer postId;
-
 
     public Vote() {
     }
@@ -60,18 +54,13 @@ public class Vote implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        model.Vote vote = (model.Vote) o;
-        return Objects.equals(id, vote.id) &&
-                Objects.equals(userId, vote.userId) &&
-                Objects.equals(postId, vote.postId);
+        Vote vote = (Vote) o;
+        return Objects.equals(id, vote.id) && Objects.equals(userId, vote.userId) && Objects.equals(postId, vote.postId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                id,
-                userId,
-                postId);
+        return Objects.hash(id, userId, postId);
     }
 
     @Override
@@ -83,3 +72,4 @@ public class Vote implements Serializable {
                 '}';
     }
 }
+

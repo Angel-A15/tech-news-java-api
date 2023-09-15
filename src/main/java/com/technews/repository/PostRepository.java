@@ -1,7 +1,7 @@
-package repository;
+package main.java.com.technews.repository;
 
-import model.Post;
-
+import main.java.com.technews.model.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 @Repository

@@ -1,11 +1,14 @@
 package main.java.com.technews.controller;
 
 
+import main.java.com.technews.model.Comment;
+import main.java.com.technews.model.User;
+import main.java.com.technews.repository.CommentRepository;
+import main.java.com.technews.repository.PostRepository;
+import main.java.com.technews.repository.UserRepository;
+import main.java.com.technews.repository.VoteRepository;
+
 import model.Post;
-import repository.CommentRepository;
-import repository.PostRepository;
-import repository.UserRepository;
-import repository.VoteRepository;
 
 import java.util.List;
 

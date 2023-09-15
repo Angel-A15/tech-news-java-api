@@ -1,14 +1,18 @@
 package main.java.com.technews.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
+
 import java.beans.Transient;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "post")
-
 public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,11 +32,12 @@ public class Post implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
     private Date updatedAt = new Date();
+    // Need to use FetchType.LAZY to resolve multiple bags exception
+    @OneToMany(mappedBy = "postId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
     public Post() {
     }
-
 
     public Post(Integer id, String title, String postUrl, int voteCount, Integer userId) {
         this.id = id;
@@ -126,7 +131,6 @@ public class Post implements Serializable {
     public int hashCode() {
         return Objects.hash(id, title, postUrl, userName, voteCount, userId, postedAt, updatedAt, comments);
     }
-
 
     @Override
     public String toString() {

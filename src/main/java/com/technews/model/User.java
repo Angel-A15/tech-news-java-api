@@ -1,5 +1,9 @@
 package main.java.com.technews.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.*;
+
 import java.beans.Transient;
 import java.io.Serializable;
 import java.util.List;
@@ -15,14 +19,12 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String username;
-
     @Column(unique = true)
     private String email;
     private String password;
     @Transient
     boolean loggedIn;
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-
     private List<Post> posts;
     // Need to use FetchType.LAZY to resolve multiple bags exception
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -34,15 +36,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Integer id, String username, String email, String password, boolean loggedIn, List<Post> posts, List<Vote> votes, List<Comment> comments) {
+    public User(Integer id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.loggedIn = loggedIn;
-        this.posts = posts;
-        this.votes = votes;
-        this.comments = comments;
     }
 
     public Integer getId() {
@@ -114,7 +112,14 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return loggedIn == user.loggedIn && Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(posts, user.posts) && Objects.equals(votes, user.votes) && Objects.equals(comments, user.comments);
+        return loggedIn == user.loggedIn &&
+                Objects.equals(id, user.id) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(posts, user.posts) &&
+                Objects.equals(votes, user.votes) &&
+                Objects.equals(comments, user.comments);
     }
 
     @Override

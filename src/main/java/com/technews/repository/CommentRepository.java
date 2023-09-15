@@ -1,4 +1,4 @@
-package repository;
+package main.java.com.technews.repository;
 
 import main.java.com.technews.model.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;

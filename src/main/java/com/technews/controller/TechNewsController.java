@@ -3,10 +3,10 @@ package main.java.com.technews.controller;
 
 import model.Post;
 import model.Vote;
-import repository.CommentRepository;
-import repository.PostRepository;
-import repository.UserRepository;
-import repository.VoteRepository;
+import main.java.com.technews.repository.CommentRepository;
+import main.java.com.technews.repository.PostRepository;
+import main.java.com.technews.repository.UserRepository;
+import main.java.com.technews.repository.VoteRepository;
 
 @Controller
 public class TechNewsController {
